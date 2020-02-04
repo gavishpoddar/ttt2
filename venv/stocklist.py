@@ -1,0 +1,1 @@
+data = [{"symbol": "NSE:ZEEL", "mc-symbol": "ZT", "tradingsymbol": "ZEEL", "quantity": 1, "max_quantity": 2, "min_lim":-0.025, "max_lim": 0.025}]
