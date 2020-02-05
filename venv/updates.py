@@ -9,8 +9,8 @@ from dataBuffer import quote
 def updates(symbol, moneyControl_Symbol):
  threads = []
 
- min1 = 1
- min5 = 0
+ min1 = 0
+ min5 = 1
  min30 = 0
 
  if min1 == 1 :

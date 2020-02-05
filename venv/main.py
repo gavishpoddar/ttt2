@@ -57,5 +57,5 @@ def post_processor():
 
 while True:
   pre_processor()
-  trade_1min()
+  trade_5min()
   post_processor()
