@@ -3,6 +3,7 @@ import threading
 import time
 import data_1m
 import data_5m
+import data_30m
 from dataBuffer import quote
 
 def updates(symbol, moneyControl_Symbol):
@@ -11,9 +12,6 @@ def updates(symbol, moneyControl_Symbol):
  min1 = 1
  min5 = 0
  min30 = 0
-
-
-
 
  if min1 == 1 :
    macd_1m =  threading.Thread(target=data_1m.getMACD, args=(symbol,))
