@@ -11,6 +11,7 @@ def updates(symbol, moneyControl_Symbol):
  min5 = 0
  min1 = 1
 
+
  if min1 == 1 :
    macd_1m =  threading.Thread(target=data_1m.getMACD, args=(symbol,))
    ltp_1m =  threading.Thread(target=quote, args=(moneyControl_Symbol,))

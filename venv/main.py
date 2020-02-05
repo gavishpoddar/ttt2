@@ -31,14 +31,15 @@ def pre_processor():
      threads.append(update)
 
   sleeptime = datetime.datetime.utcnow().second
-  if sleeptime > 25:
+  if sleeptime > 30:
     sleeptime = 60 - sleeptime
     print("Error Correction Sleep : "+ str(sleeptime))
     time.sleep(sleeptime)
 
-  sleeptime = 15 - datetime.datetime.utcnow().second
-  print("Pre- Process Sleep : "+ str(sleeptime))
-  time.sleep(sleeptime)
+  if sleeptime < 20:
+   sleeptime = 20 - datetime.datetime.utcnow().second
+   print("Pre- Process Sleep : "+ str(sleeptime))
+   time.sleep(sleeptime)
 
   for x in threads:
      x.start()
@@ -49,7 +50,7 @@ def pre_processor():
 
 def post_processor():
   sleeptime = 60 - datetime.datetime.utcnow().second
-  if sleeptime > 30:
+  if sleeptime > 40:
     sleeptime = 0
   print("Post- Process Sleep : "+ str(sleeptime))
   time.sleep(sleeptime)
