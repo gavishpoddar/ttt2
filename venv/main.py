@@ -7,7 +7,7 @@ from rms import rms
 from updates import updates
 from trade import trade_1min,trade_5min
 
-start = datetime.time(9, 0, 0)
+start = datetime.time(9, 15, 0)
 end = datetime.time(15, 10, 0)
 
 def time_in_range(x):

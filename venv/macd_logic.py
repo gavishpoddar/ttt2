@@ -57,19 +57,4 @@ def macd(macd):
 
     possible_trade, data = trend_change_hist(macd['Hist'][0],macd['Hist'][1],macd['Hist'][2])
 
-    """
-    trend_c = trend_change(macd["MACD"][0],macd["MACD"][1],macd["MACD"][2],macd["MACD"][3],macd["MACD"][4])
-    trend1 = trend(macd["MACD"][0],macd["MACD"][1])
-
-    possible_trade = 0
-    data = {}
-
-    if trend_c == 1 and trend1 != 0:
-        possible_trade = 1
-        if trend1 == 1:
-            data = {"transaction_type" : "SELL"}
-        if trend1 == -1:
-            data = {"transaction_type": "BUY"}
-    """
-
     return possible_trade, data

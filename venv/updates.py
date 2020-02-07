@@ -19,7 +19,7 @@ def updates(symbol, moneyControl_Symbol):
    threads.append(macd_1m)
    threads.append(ltp_1m)
 
- if datetime.utcnow().minute % 5 == 0 and min5 == 1:
+ if datetime.utcnow().minute % 5 == 2 and min5 == 1:
    macd_5m = threading.Thread(target=data_5m.getMACD, args=(symbol,))
    ltp_5m = threading.Thread(target=quote, args=(moneyControl_Symbol,))
    threads.append(macd_5m)

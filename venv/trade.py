@@ -45,7 +45,7 @@ def trade_1min():
                 order(x['tradingsymbol'], macd_data['transaction_type'], 'MARKET', int(quantity))
 
 def trade_5min():
-    if datetime.utcnow().minute % 5 == 0 :
+    if datetime.utcnow().minute % 5 == 2 :
       for x in stocklist.data:
          alloted_quantity = x['quantity']
          macd = data_5m.MACD(x['symbol'])
