@@ -97,7 +97,7 @@ def MACD(symbol):
     for key in keys:
         MACD.append(data[key]['MACD'])
         MACD_Signal.append(data[key]['MACD_Signal'])
-        MACD_Hist.append(float(data[key]['MACD_Hist']))
+        MACD_Hist.append(round(float(data[key]['MACD_Hist']), 3))
 
     myDict = {"MACD": MACD, "MACD_Signal": MACD_Signal, "Hist": MACD_Hist}
     return myDict
