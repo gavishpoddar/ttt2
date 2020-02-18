@@ -1,1 +1,1 @@
-data = [{"symbol": "NSE:GAIL", "mc-symbol": "GAI", "tradingsymbol": "GAIL", "quantity": 1, "max_quantity": 1, "min_lim":-0.02, "max_lim": 0.02}]
+data = [{"symbol": "NSE:GAIL", "mc-symbol": "GAI", "tradingsymbol": "GAIL", "quantity": 1, "max_quantity": 1, "lim": 0.02, "no_action_change":}]

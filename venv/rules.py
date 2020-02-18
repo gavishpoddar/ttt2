@@ -4,15 +4,15 @@ import stocklist
 def stock_ckeck(symbol):
   for x in stocklist.data:
       if x['symbol'] == symbol:
-          min_limit = x["min_lim"]
-          max_limit = x["max_lim"]
-          return min_limit, max_limit
+          limit = x["lim"]
+          no_action_change = x["no_action_change"]
+          return limit, no_action_change
 
 
 def macd(macd, symbol):
-    min_limit, max_limit = stock_ckeck(symbol)
+    limit, no_action_change = stock_ckeck(symbol)
     rules_broken = 0
-    if min_limit <= macd["Hist"][0] <= max_limit:
+    if -limit <= macd["Hist"][0] <= limit:
         rules_broken = rules_broken + 1
     elif min_limit <= macd["Hist"][1] <= max_limit:
         rules_broken = rules_broken + 1
