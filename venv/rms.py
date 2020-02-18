@@ -24,19 +24,37 @@ def stop_loss_plus(portfol, order):
     modify = 0
     ordertype = "SL-M"
 
+    stoploss_price = quoteMoneyControl(portfol["tradingsymbol"])
+
     getQuote(portfol["tradingsymbol"])
     open_p, high_p, low_p ,close_p = Quote(portfol["tradingsymbol"])
-
 
     quantity = int(portfol["quantity"])
     if quantity > 0:
         transaction_type = "SELL"
-        stoploss_price = float(stoploss_price) * 0.998
+        stoploss_price = float(stoploss_price)
+
+        if high_p <= stoploss_price and  high_p > stoploss_price * 0.998:
+            stoploss_price = high_p
+
+        elif high_p * 0.998 <= stoploss_price and  high_p * 0.998 > stoploss_price * 0.998:
+            stoploss_price = high_p * 0.998
+        else :
+            stoploss_price = stoploss_price * 0.998
+
 
     if quantity < 0:
         transaction_type = "BUY"
         quantity = quantity * -1
-        stoploss_price = float(stoploss_price) * 1.002
+        stoploss_price = float(stoploss_price)
+
+        if low_p >= stoploss_price and  low_p < stoploss_price * 1.002:
+            stoploss_price = low_p
+
+        elif low_p * 1.002 >= stoploss_price and  low_p * 1.002 < stoploss_price * 1.002:
+            stoploss_price = low_p * 1.002
+        else :
+            stoploss_price = stoploss_price * 1.002
 
     for x in order:
         if x["tradingsymbol"] == portfol['tradingsymbol'] and x["order_type"] == "SL-M" and x['status'] == 'TRIGGER PENDING':
