@@ -1,5 +1,5 @@
 from zerodha import *
-from data_1m import quoteMoneyControl
+from data_1m import quoteMoneyControl, getQuote
 
 def stoploss_at_order(tradingsymbol,transaction_type,order_type,quantity,price):
 

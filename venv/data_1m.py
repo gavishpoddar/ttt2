@@ -91,6 +91,42 @@ def RSI(symbol):
         rsi.append(data[key]['RSI'])
     return rsi
 
+def Quote(symbol):
+    now = datetime.now()
+    now = now.strftime("%d%m%Y%H:%M")
+    filename = "data/datadump/quotes/1min/" + symbol + now + ".txt"
+
+    open_p = []
+    high_p = []
+    low_p = []
+    close_p = [
+
+
+
+    ]
+
+
+    try:
+      with open(filename) as json_file:
+          data = json.load(json_file)
+    except:
+        getMACD(symbol)
+        now = datetime.now()
+        now = now.strftime("%d%m%Y%H:%M")
+        filename = "data/datadump/quotes/1min/" + symbol + now + ".txt"
+        with open(filename) as json_file:
+            data = json.load(json_file)
+    data = (data['Time Series (1min)'])
+    keys = data.keys()
+    for key in keys:
+        open_p.append(data[key]['1. open'])
+        high_p.append(data[key]['2. high'])
+        low_p.append(data[key]['3. low'])
+        close_p.append(data[key]['3. close'])
+
+    myDict = {"open": open_p, "high": high_p, "low": low_p, "close": close_p}
+    return myDict
+
 
 def MACD(symbol):
     indicator = "MACD"
@@ -174,3 +210,19 @@ def getRSI(symbol):
             json.dump(data, outfile)
     except:
         getRSI(symbol)
+
+def getQuote(symbol):
+    try:
+        now = datetime.now()
+        now = now.strftime("%d%m%Y%H:%M")
+        filename = "data/datadump/quote/1min/" + symbol + now + ".txt"
+        url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=1min&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
+        payload = {}
+        headers = {}
+        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=3)
+        with open(filename, 'w') as outfile:
+            data = response.json()
+            test = data['Time Series (1min)']
+            json.dump(data, outfile)
+    except:
+        getQuote(symbol)
