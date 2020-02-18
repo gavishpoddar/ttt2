@@ -1,5 +1,5 @@
 from zerodha import *
-from data_1m import quoteMoneyControl, getQuote
+from data_1m import quoteMoneyControl, getQuote, Quote
 
 def stoploss_at_order(tradingsymbol,transaction_type,order_type,quantity,price):
 
@@ -24,7 +24,9 @@ def stop_loss_plus(portfol, order):
     modify = 0
     ordertype = "SL-M"
 
-    stoploss_price = quoteMoneyControl(portfol["tradingsymbol"])
+    getQuote(portfol["tradingsymbol"])
+    open_p, high_p, low_p ,close_p = Quote(portfol["tradingsymbol"])
+
 
     quantity = int(portfol["quantity"])
     if quantity > 0:

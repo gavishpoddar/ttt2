@@ -99,11 +99,7 @@ def Quote(symbol):
     open_p = []
     high_p = []
     low_p = []
-    close_p = [
-
-
-
-    ]
+    close_p = []
 
 
     try:
@@ -124,8 +120,7 @@ def Quote(symbol):
         low_p.append(data[key]['3. low'])
         close_p.append(data[key]['3. close'])
 
-    myDict = {"open": open_p, "high": high_p, "low": low_p, "close": close_p}
-    return myDict
+    return open_p, high_p, low_p ,close_p
 
 
 def MACD(symbol):
