@@ -162,7 +162,7 @@ def getMACD(symbol):
         url = "https://www.alphavantage.co/query?function=MACD&interval=1min&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=3)
+        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=5)
         with open(filename, 'w') as outfile:
             data = response.json()
             test = data['Technical Analysis: MACD']
@@ -180,7 +180,7 @@ def getSTOCH(symbol):
         url = "https://www.alphavantage.co/query?function=STOCH&interval=1min&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=3)
+        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=5)
         with open(filename, 'w') as outfile:
             data = response.json()
             test = (data['Technical Analysis: STOCH'])
@@ -198,7 +198,7 @@ def getRSI(symbol):
         url = "https://www.alphavantage.co/query?function=RSI&interval=1min&time_period=14&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=3)
+        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=5)
         with open(filename, 'w') as outfile:
             data = response.json()
             test = data['Technical Analysis: RSI']
@@ -214,7 +214,7 @@ def getQuote(symbol):
         url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=1min&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=3)
+        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=5)
         with open(filename, 'w') as outfile:
             data = response.json()
             test = data['Time Series (1min)']
