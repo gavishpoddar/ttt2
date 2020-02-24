@@ -48,7 +48,7 @@ def STOCH(symbol):
     indicator = "STOCH"
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
-    filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".txt"
+    filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".json"
     with open(filename) as json_file:
         data = json.load(json_file)
     SlowK = []
@@ -70,7 +70,7 @@ def RSI(symbol):
     indicator = "RSI"
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
-    filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".txt"
+    filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".json"
     with open(filename) as json_file:
         data = json.load(json_file)
 
@@ -85,7 +85,7 @@ def MACD(symbol):
     indicator = "MACD"
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
-    filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".txt"
+    filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".json"
 
     MACD_Signal = []
     MACD = []
@@ -108,7 +108,7 @@ def getMACD(symbol):
         indicator = "MACD"
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".txt"
+        filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".json"
         url = "https://www.alphavantage.co/query?function=MACD&interval=5min&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
@@ -126,7 +126,7 @@ def getSTOCH(symbol):
         indicator = "STOCH"
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".txt"
+        filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".json"
         url = "https://www.alphavantage.co/query?function=STOCH&interval=5min&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
@@ -144,7 +144,7 @@ def getRSI(symbol):
         indicator = "RSI"
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".txt"
+        filename = "data/datadump/indicator/5min/" + indicator + symbol + now + ".json"
         url = "https://www.alphavantage.co/query?function=RSI&interval=5min&time_period=14&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}

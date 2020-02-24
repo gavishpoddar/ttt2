@@ -48,7 +48,7 @@ def STOCH(symbol):
     indicator = "STOCH"
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
-    filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".txt"
+    filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".json"
     try:
       with open(filename) as json_file:
           data = json.load(json_file)
@@ -76,7 +76,7 @@ def RSI(symbol):
     indicator = "RSI"
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
-    filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".txt"
+    filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".json"
     try:
       with open(filename) as json_file:
           data = json.load(json_file)
@@ -94,7 +94,7 @@ def RSI(symbol):
 def Quote(symbol):
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
-    filename = "data/datadump/quotes/1min/" + symbol + now + ".txt"
+    filename = "data/datadump/quotes/1min/" + symbol + now + ".json"
 
     open_p = []
     high_p = []
@@ -109,7 +109,7 @@ def Quote(symbol):
         getMACD(symbol)
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/quotes/1min/" + symbol + now + ".txt"
+        filename = "data/datadump/quotes/1min/" + symbol + now + ".json"
         with open(filename) as json_file:
             data = json.load(json_file)
     data = (data['Time Series (1min)'])
@@ -127,7 +127,7 @@ def MACD(symbol):
     indicator = "MACD"
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
-    filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".txt"
+    filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".json"
 
     MACD_Signal = []
     MACD = []
@@ -139,7 +139,7 @@ def MACD(symbol):
         getMACD(symbol)
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".txt"
+        filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".json"
         with open(filename) as json_file:
             data = json.load(json_file)
     data = (data['Technical Analysis: MACD'])
@@ -158,7 +158,7 @@ def getMACD(symbol):
         indicator = "MACD"
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".txt"
+        filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".json"
         url = "https://www.alphavantage.co/query?function=MACD&interval=1min&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
@@ -176,7 +176,7 @@ def getSTOCH(symbol):
         indicator = "STOCH"
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".txt"
+        filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".json"
         url = "https://www.alphavantage.co/query?function=STOCH&interval=1min&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
@@ -194,7 +194,7 @@ def getRSI(symbol):
         indicator = "RSI"
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".txt"
+        filename = "data/datadump/indicator/1min/" + indicator + symbol + now + ".json"
         url = "https://www.alphavantage.co/query?function=RSI&interval=1min&time_period=14&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
@@ -210,7 +210,7 @@ def getQuote(symbol):
     try:
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/quote/1min/" + symbol + now + ".txt"
+        filename = "data/datadump/quote/1min/" + symbol + now + ".json"
         url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=1min&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
