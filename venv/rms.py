@@ -34,11 +34,14 @@ def stop_loss_plus(portfol, order):
         transaction_type = "SELL"
         stoploss_price = float(stoploss_price)
 
-        if high_p <= stoploss_price and  high_p > stoploss_price * 0.998:
+        if high_p < stoploss_price and  high_p > stoploss_price * 0.998:
             stoploss_price = high_p
-
-        elif high_p * 0.998 <= stoploss_price and  high_p * 0.998 > stoploss_price * 0.998:
+        elif high_p * 0.998 < stoploss_price and  high_p * 0.998 > stoploss_price * 0.998:
             stoploss_price = high_p * 0.998
+        elif close_p < stoploss_price and  close_p > stoploss_price * 0.998:
+            stoploss_price = close_p
+        elif close_p * 0.998 < stoploss_price and  close_p * 0.998 > stoploss_price * 0.998:
+            stoploss_price = close_p * 0.998
         else :
             stoploss_price = stoploss_price * 0.998
 
@@ -48,11 +51,15 @@ def stop_loss_plus(portfol, order):
         quantity = quantity * -1
         stoploss_price = float(stoploss_price)
 
-        if low_p >= stoploss_price and  low_p < stoploss_price * 1.002:
+        if low_p > stoploss_price and  low_p < stoploss_price * 1.002:
             stoploss_price = low_p
-
-        elif low_p * 1.002 >= stoploss_price and  low_p * 1.002 < stoploss_price * 1.002:
+        elif low_p * 1.002 > stoploss_price and  low_p * 1.002 < stoploss_price * 1.002:
             stoploss_price = low_p * 1.002
+        elif close_p > stoploss_price and  close_p < stoploss_price * 1.002:
+            stoploss_price = close_p
+
+        elif close_p * 1.002 > stoploss_price and  close_p * 1.002 < stoploss_price * 1.002:
+            stoploss_price = close_p * 1.002
         else :
             stoploss_price = stoploss_price * 1.002
 
