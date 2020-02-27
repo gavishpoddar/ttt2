@@ -57,7 +57,6 @@ def stop_loss_plus(portfol, order):
             stoploss_price = low_p * 1.002
         elif close_p > stoploss_price and  close_p < stoploss_price * 1.002:
             stoploss_price = close_p
-
         elif close_p * 1.002 > stoploss_price and  close_p * 1.002 < stoploss_price * 1.002:
             stoploss_price = close_p * 1.002
         else :
