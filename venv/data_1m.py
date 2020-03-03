@@ -94,7 +94,7 @@ def RSI(symbol):
 def Quote(symbol):
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
-    filename = "data/datadump/quotes/1min/" + symbol + now + ".json"
+    filename = "data/datadump/quote/1min/" + symbol + now + ".json"
 
     open_p = []
     high_p = []
@@ -106,10 +106,11 @@ def Quote(symbol):
       with open(filename) as json_file:
           data = json.load(json_file)
     except:
-        getMACD(symbol)
+        print("cyj")
+        getQuote(symbol)
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
-        filename = "data/datadump/quotes/1min/" + symbol + now + ".json"
+        filename = "data/datadump/quote/1min/" + symbol + now + ".json"
         with open(filename) as json_file:
             data = json.load(json_file)
     data = (data['Time Series (1min)'])
@@ -136,6 +137,7 @@ def MACD(symbol):
       with open(filename) as json_file:
           data = json.load(json_file)
     except:
+        print("aa")
         getMACD(symbol)
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
@@ -162,12 +164,13 @@ def getMACD(symbol):
         url = "https://www.alphavantage.co/query?function=MACD&interval=1min&series_type=close&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=5)
+        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=7)
         with open(filename, 'w') as outfile:
             data = response.json()
             test = data['Technical Analysis: MACD']
             json.dump(data, outfile)
     except:
+        print("hh")
         getMACD(symbol)
 
 
@@ -214,10 +217,14 @@ def getQuote(symbol):
         url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=1min&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
+        print("gg")
+
         response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=5)
+        print("gjjg")
         with open(filename, 'w') as outfile:
             data = response.json()
             test = data['Time Series (1min)']
             json.dump(data, outfile)
     except:
+        print("ugj")
         getQuote(symbol)

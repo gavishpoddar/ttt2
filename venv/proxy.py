@@ -22,6 +22,7 @@ def proxyList():
 
      host = data[rand]['host']
      port = str(data[rand]['port'])
+     print("Proxy Fetched")
      https_proxy = "https://"+host+":"+port
     
 
