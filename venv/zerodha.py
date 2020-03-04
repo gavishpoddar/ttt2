@@ -43,7 +43,7 @@ def auth():
    pin[0].send_keys(loginpin)
    pinLoginButton = browser.find_elements_by_css_selector(".wide")
    pinLoginButton[0].click()
-   time.sleep(4)
+   time.sleep(10)
    cookies = browser.get_cookies()
    kf_session = cookies[0]['value']
    cfduid = cookies[1]['value']
