@@ -92,6 +92,12 @@ def RSI(symbol):
     return rsi
 
 def Quote(symbol):
+
+    for x in stocklist.data:
+        if x["tradingsymbol"] == symbol:
+            symbol = x["symbol"]
+
+
     now = datetime.now()
     now = now.strftime("%d%m%Y%H:%M")
     filename = "data/datadump/quote/1min/" + symbol + now + ".json"
@@ -119,7 +125,7 @@ def Quote(symbol):
         open_p.append(data[key]['1. open'])
         high_p.append(data[key]['2. high'])
         low_p.append(data[key]['3. low'])
-        close_p.append(data[key]['3. close'])
+        close_p.append(data[key]['4. close'])
 
     return open_p, high_p, low_p ,close_p
 
@@ -137,7 +143,6 @@ def MACD(symbol):
       with open(filename) as json_file:
           data = json.load(json_file)
     except:
-        print("aa")
         getMACD(symbol)
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
@@ -170,7 +175,6 @@ def getMACD(symbol):
             test = data['Technical Analysis: MACD']
             json.dump(data, outfile)
     except:
-        print("hh")
         getMACD(symbol)
 
 
@@ -210,6 +214,11 @@ def getRSI(symbol):
         getRSI(symbol)
 
 def getQuote(symbol):
+
+    for x in stocklist.data:
+        if x["tradingsymbol"] == symbol:
+            symbol = x["symbol"]
+
     try:
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
@@ -217,14 +226,22 @@ def getQuote(symbol):
         url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=1min&apikey=6OKA3205BSYK5H0G&symbol=" + symbol
         payload = {}
         headers = {}
-        print("gg")
 
-        response = requests.request("GET", url, headers=headers, data=payload, proxies=proxyList(), timeout=5)
-        print("gjjg")
+        response = requests.request("GET", url, headers=headers, data=payload, timeout=5)
         with open(filename, 'w') as outfile:
             data = response.json()
-            test = data['Time Series (1min)']
+            test = (data['Time Series (1min)'])
             json.dump(data, outfile)
+
     except:
-        print("ugj")
         getQuote(symbol)
+
+
+
+
+        """
+        Steve Thomas
+        Nupoor Porwal (Girl)
+        Yeah Henoy
+        Devi Arjun
+        """
