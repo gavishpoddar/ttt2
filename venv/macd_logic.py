@@ -22,17 +22,29 @@ def trend_change(val1, val2, val3, val4, val5):
     trend4 = trend(val4,val5)
 
     trend_change = 0
+    possible_trade = 0
+    data = {}
 
     if trend1 != trend2 and trend2 == trend3 or trend3 == 0:
         trend_change = 1
     if trend1 != trend3 and trend3 == trend4 or trend4 == 0:
         trend_change = 1
-    return trend_change
+
+    if  trend_change == 1:
+        if trend1 ==  1:
+            possible_trade = 1
+            data = {"transaction_type": "BUY"}
+
+        if trend1 ==  -1:
+            possible_trade = 1
+            data = {"transaction_type": "SELL"}
+
+
+    return possible_trade, data
 
 
 def trend_change_hist(val1, val2, val3):
     possible_trade = 0
-
     data = {}
 
     if val1 > val2 and val3 > val2:
