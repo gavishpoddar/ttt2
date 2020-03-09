@@ -3,6 +3,7 @@ import requests
 from datetime import date, datetime
 import os.path
 import time
+import brotli
 
 today = date.today()
 today = today.strftime("%d%B%Y")
@@ -92,7 +93,6 @@ try:
     try:
         margin = response.json()
     except:
-        import brotli
         margin = brotli.decompress(response.content)
         margin = json.loads(margin)
     margin = margin['data']['equity']['available']['live_balance']
@@ -215,7 +215,11 @@ def margin():
 
   try:
     response = requests.request("GET", url, headers=headers, data=payload)
-    margin = response.json()
+    try:
+        margin = response.json()
+    except:
+        margin = brotli.decompress(response.content)
+        margin = json.loads(margin)
     margin = margin['data']['equity']['available']['live_balance']
     error_code = 0
     status_code = response.status_code
@@ -293,7 +297,11 @@ def positions():
   try:
     order = []
     response = requests.request("GET", url, headers=headers, data=payload)
-    data = response.json()
+    try:
+        data = response.json()
+    except:
+        margin = brotli.decompress(response.content)
+        data = json.loads(margin)
     for x in range(len(data['data']['day'])):
         myDict = {"tradingsymbol": data['data']['day'][x]['tradingsymbol'], "exchange": data['data']['day'][x]['exchange'],"quantity": data['data']['day'][x]['quantity']}
         order.append(myDict)
@@ -304,7 +312,6 @@ def positions():
     filename = "data/datadump/position/" + now + ".txt"
     with open(filename, 'w') as outfile:
         json.dump(data, outfile)
-    print(12)
 
     return status_code, order , error_code
   except:
@@ -341,7 +348,11 @@ def orders():
   try:
     order = []
     response = requests.request("GET", url, headers=headers, data=payload)
-    data = response.json()
+    try:
+        data = response.json()
+    except:
+        margin = brotli.decompress(response.content)
+        data = json.loads(margin)
     for x in range(len(data['data'])):
         myDict = {"order_id": data['data'][x]['order_id'], "status": data['data'][x]['status'],"quantity": data['data'][x]['quantity'],"exchange": data['data'][x]['exchange'], "tradingsymbol": data['data'][x]['tradingsymbol'],"order_type": data['data'][x]['order_type'],"transaction_type": data['data'][x]['transaction_type'],"price": data['data'][x]['price'],"trigger_price": data['data'][x]['trigger_price'],"filled_quantity": data['data'][x]['filled_quantity'],"pending_quantity": data['data'][x]['pending_quantity']}
         order.append(myDict)

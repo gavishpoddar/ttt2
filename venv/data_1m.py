@@ -112,7 +112,6 @@ def Quote(symbol):
       with open(filename) as json_file:
           data = json.load(json_file)
     except:
-        print("cyj")
         getQuote(symbol)
         now = datetime.now()
         now = now.strftime("%d%m%Y%H:%M")
