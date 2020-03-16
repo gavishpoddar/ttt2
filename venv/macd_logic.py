@@ -67,6 +67,6 @@ def trend_change_hist(val1, val2, val3):
 
 def macd(macd):
 
-    possible_trade, data = trend_change_hist(macd['Hist'][0],macd['Hist'][1],macd['Hist'][2])
-
+    possible_trade, data = trend_change(macd['Hist'][0],macd['Hist'][1],macd['Hist'][2],macd['Hist'][3],macd['Hist'][4])
+    print(data)
     return possible_trade, data

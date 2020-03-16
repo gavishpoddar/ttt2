@@ -37,7 +37,7 @@ def pre_processor():
     time.sleep(sleeptime)
 
   if sleeptime < 20:
-   sleeptime = 35 - datetime.datetime.utcnow().second
+   sleeptime = 30 - datetime.datetime.utcnow().second
    print("Pre- Process Sleep : "+ str(sleeptime))
    time.sleep(sleeptime)
 
