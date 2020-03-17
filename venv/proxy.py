@@ -7,10 +7,10 @@ import datetime
 
 
 def updateProxy():
-   os.system("proxybroker find --types HTTPS -l 30 -f json > /Users/gavish/PycharmProjects/kite_api_2020.02/venv/proxylistupdate.json")
+   os.system("proxybroker find --types HTTPS -l 30 -f json > /Users/gdev/PycharmProjects/kite_api_2020.02.04/venv/proxylistupdate.json")
    os.rename(
-       '/Users/gavish/PycharmProjects/kite_api_2020.02/venv/proxylistupdate.json',
-       '/Users/gavish/PycharmProjects/kite_api_2020.02/venv/proxylist.json')
+       '/Users/gdev/PycharmProjects/kite_api_2020.02.04/venv/proxylistupdate.json',
+       '/Users/gdev/PycharmProjects/kite_api_2020.02.04/venv/proxylist.json')
 
 def proxyList():
     try:
@@ -29,7 +29,8 @@ def proxyList():
          "https": https_proxy
      }
     except:
-        update()
+
+        updateProxy()
         proxy = proxyList()
 
     return proxy

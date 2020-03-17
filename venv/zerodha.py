@@ -31,7 +31,7 @@ def auth():
    passWord = 'Archidply1'
    loginpin = '805580'
 
-   browser = webdriver.Chrome("/Users/gavish/PycharmProjects/kite_rest_api/venv/chromedriver",seleniumwire_options={'verify_ssl': False})
+   browser = webdriver.Chrome("/Users/gdev/PycharmProjects/kite_api_2020.02.04/venv/chromedriver",seleniumwire_options={'verify_ssl': False})
    browser.get('https://kite.zerodha.com/')
    username = browser.find_elements_by_css_selector(".uppercase input")
    username[0].send_keys(userName)

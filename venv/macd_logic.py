@@ -47,6 +47,10 @@ def trend_change_hist(val1, val2, val3):
     possible_trade = 0
     data = {}
 
+    print(val1)
+    print(val2)
+    print(val3)
+
     if val1 > val2 and val3 > val2:
         print(val1)
         print(val2)
@@ -67,6 +71,6 @@ def trend_change_hist(val1, val2, val3):
 
 def macd(macd):
 
-    possible_trade, data = trend_change(macd['Hist'][0],macd['Hist'][1],macd['Hist'][2],macd['Hist'][3],macd['Hist'][4])
+    possible_trade, data = trend_change_hist(macd['Hist'][0],macd['Hist'][1],macd['Hist'][2])
     print(data)
     return possible_trade, data

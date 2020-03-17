@@ -18,6 +18,7 @@ def macd(macd, symbol):
     elif -limit <= macd["Hist"][1] <= limit:
         rules_broken = rules_broken + 1
     elif -float(no_action_change) <= macd["Hist"][0] - macd["Hist"][1] <= float(no_action_change):
+        print("NO ACTION CHANGE")
         rules_broken = rules_broken + 1
 
     return rules_broken
