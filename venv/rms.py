@@ -30,20 +30,6 @@ def stop_loss_plus(portfol, order):
     open_p, high_p, low_p ,close_p = Quote(portfol["tradingsymbol"])
 
     quantity = int(portfol["quantity"])
-    if quantity > 0:
-        transaction_type = "SELL"
-        stoploss_price = float(stoploss_price)
-
-        if float(high_p[0]) < stoploss_price and  float(high_p[0]) > stoploss_price * 0.998:
-            stoploss_price = float(high_p[0])
-        elif float(high_p[0]) * 0.998 < stoploss_price and  float(high_p[0]) * 0.998 > stoploss_price * 0.998:
-            stoploss_price = float(high_p[0]) * 0.998
-        elif float(close_p[0]) < stoploss_price and  float(close_p[0]) > stoploss_price * 0.998:
-            stoploss_price = float(close_p[0])
-        elif float(close_p[0]) * 0.998 < stoploss_price and  float(close_p[0]) * 0.998 > stoploss_price * 0.998:
-            stoploss_price = float(close_p[0]) * 0.998
-        else :
-            stoploss_price = stoploss_price * 0.998
 
 
     if quantity < 0:
